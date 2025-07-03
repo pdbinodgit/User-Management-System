@@ -1,13 +1,13 @@
-package com.usermanagentsystem.usermanagementsystem;
+package com.usermanagementsystem.usermanagementsystem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class UserManagentSystemApplication {
+public class UserManagementSystem {
 
 	public static void main(String[] args) {
-		SpringApplication.run(UserManagentSystemApplication.class, args);
+		SpringApplication.run(UserManagementSystem.class, args);
 	}
 
 }
