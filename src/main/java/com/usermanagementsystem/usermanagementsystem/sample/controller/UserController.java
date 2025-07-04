@@ -1,8 +1,10 @@
 package com.usermanagementsystem.usermanagementsystem.sample.controller;
 
 import com.usermanagementsystem.usermanagementsystem.sample.dto.UserDto;
+import com.usermanagementsystem.usermanagementsystem.sample.model.User;
 import com.usermanagementsystem.usermanagementsystem.sample.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,8 +24,8 @@ public class UserController {
     }
 
     @GetMapping("/getAllUser")
-    public List<UserDto> getAllUser() {
-        return userService.findAllUser();
+    public Page<User> getAllUser(@RequestParam int size, @RequestParam int number) {
+        return userService.findAllUser(size, number);
     }
 
     @PutMapping("/update")

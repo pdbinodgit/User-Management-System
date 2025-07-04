@@ -4,9 +4,13 @@ import com.usermanagementsystem.usermanagementsystem.sample.dto.UserDto;
 import com.usermanagementsystem.usermanagementsystem.sample.model.User;
 import com.usermanagementsystem.usermanagementsystem.sample.repository.UserRepository;
 import com.usermanagementsystem.usermanagementsystem.sample.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,9 +26,11 @@ public class UserServiceImpl  implements UserService{
     }
 
     @Override
-    public List<UserDto> findAllUser() {
-       List<UserDto>userDtoList= userRepository.findAll().stream().map(user -> mapToDto(user)).toList();
-        return userDtoList;
+    public Page<User> findAllUser(int pageSize, int pageNumber) {
+        int size=pageSize;
+        Page<User> users=userRepository.findAll(PageRequest.of(size, pageNumber));
+
+        return users;
     }
 
     @Override
