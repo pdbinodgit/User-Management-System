@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl  implements UserService{
 
@@ -24,6 +26,26 @@ public class UserServiceImpl  implements UserService{
        List<UserDto>userDtoList= userRepository.findAll().stream().map(user -> mapToDto(user)).toList();
         return userDtoList;
     }
+
+    @Override
+    public UserDto updateUser(UserDto userDto) {
+        Optional<User> userOptional=userRepository.findById(userDto.getId());
+        if (userOptional.isPresent()){
+            userOptional.get().setName(userDto.getName());
+            userOptional.get().setEmail(userDto.getEmail());
+            userRepository.save(userOptional.get());
+            return mapToDto(userOptional.get());
+        }else {
+            return null;
+        }
+    }
+
+    @Override
+    public UserDto findById(Long id) {
+        Optional<User> userOptional=userRepository.findById(id);
+        return userOptional.map(this::mapToDto).orElse(null);
+    }
+
 
     public User mapToEntity(UserDto userDto){
         User user=new User();

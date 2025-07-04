@@ -23,7 +23,18 @@ public class UserController {
     }
 
     @GetMapping("/getAllUser")
-    public List<UserDto> getAllUser(){
+    public List<UserDto> getAllUser() {
         return userService.findAllUser();
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<String> updateUser(UserDto userDto){
+        userService.updateUser(userDto);
+        return ResponseEntity.ok("Updated successfully.");
+    }
+
+    @GetMapping("/getById/{id}")
+    public UserDto getById(@PathVariable Long id){
+        return userService.findById(id);
     }
 }
