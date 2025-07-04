@@ -29,7 +29,8 @@ public class UserServiceImpl  implements UserService{
         User user=new User();
         user.setId(userDto.getId());
         user.setName(userDto.getName());
-        user.setEmail(user.getEmail());
+        user.setEmail(userDto.getEmail());
+        user.setPassword(userDto.getPassword());
         return user;
     }
     public UserDto mapToDto(User user){
