@@ -15,4 +15,6 @@ public interface UserService {
     public UserDto updateUser(UserDto userDto);
 
     public UserDto findById(Long id);
+
+    public Page<User> findByName(String keyword,int pagesize, int pageNumber);
 }

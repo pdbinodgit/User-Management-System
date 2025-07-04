@@ -51,6 +51,11 @@ public class UserServiceImpl  implements UserService{
         return userOptional.map(this::mapToDto).orElse(null);
     }
 
+    @Override
+    public Page<User> findByName(String keyword,int pagesize, int pageNumber) {
+        return userRepository.findAllByNameContainingIgnoreCase(keyword,PageRequest.of(pageNumber,pagesize));
+    }
+
 
     public User mapToEntity(UserDto userDto){
         User user=new User();

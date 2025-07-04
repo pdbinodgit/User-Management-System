@@ -1,5 +1,6 @@
 package com.usermanagementsystem.usermanagementsystem.sample.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,5 +14,6 @@ public class UserDto {
 
     private String email;
 
+    @JsonIgnore
     private String password;
 }

@@ -38,4 +38,10 @@ public class UserController {
     public UserDto getById(@PathVariable Long id){
         return userService.findById(id);
     }
+    @GetMapping("/findByName")
+    public Page<User> findByName(@RequestParam String keyword,
+                                 @RequestParam int pageSize,
+                                 @RequestParam int pageNumber) {
+        return userService.findByName(keyword, pageSize, pageNumber);
+    }
 }
