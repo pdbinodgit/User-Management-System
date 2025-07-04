@@ -29,7 +29,7 @@ public class UserController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<String> updateUser(UserDto userDto){
+    public ResponseEntity<String> updateUser(@RequestBody UserDto userDto){
         userService.updateUser(userDto);
         return ResponseEntity.ok("Updated successfully.");
     }
