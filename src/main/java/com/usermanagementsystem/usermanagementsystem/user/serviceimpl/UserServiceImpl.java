@@ -1,17 +1,17 @@
-package com.usermanagementsystem.usermanagementsystem.sample.serviceimpl;
+package com.usermanagementsystem.usermanagementsystem.user.serviceimpl;
 
-import com.usermanagementsystem.usermanagementsystem.sample.dto.UserDto;
-import com.usermanagementsystem.usermanagementsystem.sample.model.User;
-import com.usermanagementsystem.usermanagementsystem.sample.repository.UserRepository;
-import com.usermanagementsystem.usermanagementsystem.sample.service.UserService;
+import com.usermanagementsystem.usermanagementsystem.user.dto.UserDto;
+import com.usermanagementsystem.usermanagementsystem.user.model.User;
+import com.usermanagementsystem.usermanagementsystem.user.repository.UserRepository;
+import com.usermanagementsystem.usermanagementsystem.user.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,9 +19,13 @@ public class UserServiceImpl  implements UserService{
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+
+    PasswordEncoder encoder;
 
     @Override
     public UserDto saveUser(UserDto userDto) {
+        userDto.setPassword(encoder.encode(userDto.getPassword()));
         return mapToDto(userRepository.save(mapToEntity(userDto)));
     }
 

@@ -1,4 +1,4 @@
-package com.usermanagementsystem.usermanagementsystem.sample.dto;
+package com.usermanagementsystem.usermanagementsystem.user.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;

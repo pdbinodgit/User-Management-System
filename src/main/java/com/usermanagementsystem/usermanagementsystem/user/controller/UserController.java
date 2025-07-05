@@ -1,14 +1,12 @@
-package com.usermanagementsystem.usermanagementsystem.sample.controller;
+package com.usermanagementsystem.usermanagementsystem.user.controller;
 
-import com.usermanagementsystem.usermanagementsystem.sample.dto.UserDto;
-import com.usermanagementsystem.usermanagementsystem.sample.model.User;
-import com.usermanagementsystem.usermanagementsystem.sample.service.UserService;
+import com.usermanagementsystem.usermanagementsystem.user.dto.UserDto;
+import com.usermanagementsystem.usermanagementsystem.user.model.User;
+import com.usermanagementsystem.usermanagementsystem.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/user")

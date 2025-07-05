@@ -1,10 +1,8 @@
-package com.usermanagementsystem.usermanagementsystem.sample.service;
+package com.usermanagementsystem.usermanagementsystem.user.service;
 
-import com.usermanagementsystem.usermanagementsystem.sample.dto.UserDto;
-import com.usermanagementsystem.usermanagementsystem.sample.model.User;
+import com.usermanagementsystem.usermanagementsystem.user.dto.UserDto;
+import com.usermanagementsystem.usermanagementsystem.user.model.User;
 import org.springframework.data.domain.Page;
-
-import java.util.List;
 
 public interface UserService {
 

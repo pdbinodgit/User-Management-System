@@ -1,6 +1,6 @@
-package com.usermanagementsystem.usermanagementsystem.sample.repository;
+package com.usermanagementsystem.usermanagementsystem.user.repository;
 
-import com.usermanagementsystem.usermanagementsystem.sample.model.User;
+import com.usermanagementsystem.usermanagementsystem.user.model.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
