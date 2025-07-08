@@ -9,24 +9,23 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @PostMapping("/save")
+    @PostMapping("/url/user/save")
     public ResponseEntity<String> saveUser(@RequestBody UserDto userDto){
         userService.saveUser(userDto);
         return ResponseEntity.ok("Save Sucessfully.");
     }
 
-    @GetMapping("/getAllUser")
+    @GetMapping("/user/getAllUser")
     public Page<User> getAllUser(@RequestParam int size, @RequestParam int number) {
         return userService.findAllUser(size, number);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/user/update")
     public ResponseEntity<String> updateUser(@RequestBody UserDto userDto){
         userService.updateUser(userDto);
         return ResponseEntity.ok("Updated successfully.");

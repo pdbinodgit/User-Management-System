@@ -5,15 +5,18 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Service;
 
+import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
 
 @Service
 public class JwtService {
 
-    private final Key key= Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
     private final long EXPIRATION_TIME= 1000 * 60 * 60 * 24;
+    private static final String SECRET_KEY = "bishnu_super_secret_key_bishnu_super_secret_key";
+    private final Key key= Keys.hmacShaKeyFor(SECRET_KEY.getBytes(StandardCharsets.UTF_8));
+
 
     public String generateToken(String username){
         return Jwts.builder()
@@ -26,7 +29,7 @@ public class JwtService {
 
     public String extractUsername(String token){
         return Jwts.parserBuilder().setSigningKey(key).build()
-                .parseClaimsJwt(token)
+                .parseClaimsJws(token)
                 .getBody()
                 .getSubject();
     }

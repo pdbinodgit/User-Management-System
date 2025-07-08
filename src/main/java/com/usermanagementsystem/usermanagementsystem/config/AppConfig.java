@@ -38,7 +38,7 @@ public class AppConfig {
 public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         return http.csrf(csrf->csrf.disable())
                 .authorizeHttpRequests(auth->
-                        auth.requestMatchers("/user/**")
+                        auth.requestMatchers("/url/**")
                                 .permitAll()
                                 .anyRequest()
                                 .authenticated()
